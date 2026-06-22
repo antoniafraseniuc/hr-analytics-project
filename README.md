@@ -33,27 +33,27 @@
 ## 1. Project Overview
 
 
-**Context:** [Human Resources departments generate large volumes of workforce data but often lack the analytical tools required to transform that data into actionable business insights.
+**Context:** Human Resources departments generate large volumes of workforce data but often lack the analytical tools required to transform that data into actionable business insights.
 
-Organizations need visibility into workforce distribution, payroll expenditure, departmental performance, compensation structures, and management effectiveness.]
+Organizations need visibility into workforce distribution, payroll expenditure, departmental performance, compensation structures, and management effectiveness.
 
-**Problem Statement:** [As organizations grow, managing workforce costs and understanding organizational performance becomes increasingly complex. Without a centralized analytical framework, identifying payroll inefficiencies, budget variances, compensation risks, and management dependencies can be difficult and time-consuming.
+**Problem Statement:** As organizations grow, managing workforce costs and understanding organizational performance becomes increasingly complex. Without a centralized analytical framework, identifying payroll inefficiencies, budget variances, compensation risks, and management dependencies can be difficult and time-consuming.
 
-This project addresses these challenges by transforming workforce data into a comprehensive HR Analytics solution that provides visibility into employee, compensation, and organizational metrics, enabling more effective workforce planning and strategic decision-making.]
+This project addresses these challenges by transforming workforce data into a comprehensive HR Analytics solution that provides visibility into employee, compensation, and organizational metrics, enabling more effective workforce planning and strategic decision-making.
 
-**Approach:** [The project follows an end-to-end analytics approach, leveraging SQL to uncover workforce, compensation, and organizational insights before translating those findings into executive-level Power BI dashboards. This enables stakeholders to monitor key HR metrics and make informed strategic decisions.]
+**Approach:** The project follows an end-to-end analytics approach, leveraging SQL to uncover workforce, compensation, and organizational insights before translating those findings into executive-level Power BI dashboards. This enables stakeholders to monitor key HR metrics and make informed strategic decisions.
 
-**Outcome:** [The outcome of the project is a decision-support tool that helps HR leaders and executives understand workforce trends, evaluate compensation strategies, and identify organizational risks. By consolidating data into interactive dashboards, the solution improves visibility and supports strategic planning.]
+**Outcome:** The outcome of the project is a decision-support tool that helps HR leaders and executives understand workforce trends, evaluate compensation strategies, and identify organizational risks. By consolidating data into interactive dashboards, the solution improves visibility and supports strategic planning.
 
 ---
 
 ## 2. Objectives
 
 
-- **Primary Objective:** [Build an end-to-end HR Analytics solution that transforms workforce data into actionable business insights through advanced SQL analysis and interactive Power BI reporting.]
-- **Secondary Objective 1:** [Quantify workforce distribution, payroll allocation, and compensation structures across departments, countries, and organizational units.]
-- **Secondary Objective 2:** [Identify payroll inefficiencies, budget variances, salary pressure, and management dependencies that may impact workforce planning and organizational performance.]
-- **Secondary Objective 3:** [Develop executive-level dashboards that enable stakeholders to monitor key HR metrics and support data-driven decision-making.]
+- **Primary Objective:** Build an end-to-end HR Analytics solution that transforms workforce data into actionable business insights through advanced SQL analysis and interactive Power BI reporting.
+- **Secondary Objective 1:** Quantify workforce distribution, payroll allocation, and compensation structures across departments, countries, and organizational units.
+- **Secondary Objective 2:** Identify payroll inefficiencies, budget variances, salary pressure, and management dependencies that may impact workforce planning and organizational performance.
+- **Secondary Objective 3:** Develop executive-level dashboards that enable stakeholders to monitor key HR metrics and support data-driven decision-making.
 
 ---
 
@@ -63,26 +63,22 @@ This project addresses these challenges by transforming workforce data into a co
 
 | Dimension | Details |
 |-----------|---------|
-| **In Scope** | [Employees, Jobs, Departments, Countries, Regions, Locations] |
-| **Out of Scope** | [Attrition modelling, performance reviews, recruitment data] |
-| **Time Period** | [Simulated historical workforce data] |
-| **Granularity** | [Employee-level records] |
+| **In Scope** | Employees, Jobs, Departments, Countries, Regions, Locations |
+| **Out of Scope** | Attrition modelling, performance reviews, recruitment data |
+| **Time Period** | Simulated historical workforce data |
+| **Granularity** | Employee-level records |
 
 ### Tools & Technologies
 
-<!--
-  List only what you actually used on this project.
-  This is not your skills section - it's the project's technical context.
--->
 
 | Category | Tool(s) Used |
 |----------|-------------|
-| Data Storage | [MySQL] |
-| Data Processing | [MySQL] |
-| Analysis | [MySQL Queries] |
-| Visualization | [Power BI] |
-| Version Control | [GitHub] |
-| ERD Design | [dbdiagram.io] |
+| Data Storage | MySQL |
+| Data Processing | SQL |
+| Analysis | MySQL Queries |
+| Visualization | Power BI |
+| Version Control | GitHub |
+| ERD Design | dbdiagram.io |
 
 ---
 
@@ -111,46 +107,32 @@ This project addresses these challenges by transforming workforce data into a co
 
 ## 5. Data Workflow
 
-<!--
-  Show how data moved through your project - from source to output.
-  Every transformation decision should be traceable here.
-
-  WHAT GOOD LOOKS LIKE:
-  1. Source: "Monthly CSV exports pulled from the internal POS system.
-              Five files, one per region, covering Jan 2023–Jun 2024."
-  2. Ingestion: "Loaded into Python using pandas. Files concatenated into
-                 a single dataframe (approx. 340,000 rows)."
-  3. Cleaning: "Removed 1.2% of rows with null transaction IDs.
-                Standardised date formats across regional files.
-                Resolved product category naming inconsistencies (3 variants → 1)."
-  4. Transformation: "Created a returns_rate field at product-category level.
-                      Aggregated to weekly and regional grain for trend analysis."
-  5. Analysis: "Descriptive statistics, regional comparison, return rate
-                segmentation by product category."
-  6. Output: "Summary report (PDF), annotated notebook, processed CSV."
-
-  WHAT TO AVOID:
-  ❌ "Data was cleaned and analysed." (No chain. No decisions. No trust.)
--->
-
 ```
-[Data Source(s)]
+[Data Source]
       ↓
-[Ingestion / Collection Method]
+[Data Enrichment]
       ↓
-[Cleaning & Transformation]
+[Data Standardization]
       ↓
-[Analysis / Modelling / Querying]
+[Data Validation & Cleaning]
       ↓
-[Output / Visualisation / Reporting]
+[Transformation]
+      ↓
+[Analysis]
+      ↓
+[Output]
 ```
 
-1. **Source:** [Where did the data come from? Format, size, access method.]
-2. **Ingestion:** [How was it brought in?]
-3. **Cleaning:** [What issues did you find and fix?]
-4. **Transformation:** [What new fields, aggregations, or structures did you create?]
-5. **Analysis:** [What methods - statistical, visual, query-based, model-based?]
-6. **Output:** [What form do the results take?]
+
+  1. Source: The project is based on a relational HR database containing information about employees, departments, jobs, locations, countries, and regions. The original dataset consisted of approximately 40 employee records and was intended primarily for database learning purposes rather than large-scale workforce analytics
+  2. Data Enrichment: To create a dataset suitable for meaningful analysis, the employee table was expanded from 39 to over 15,000 records. New employee records were generated while preserving realistic business rules, including department assignments, management hierarchies, salary ranges, hire dates, and job classifications.
+The geographical structure of the dataset was also enhanced to better reflect a multinational organization. Several locations were updated to improve global representation, including replacing Toronto with Yokohama (Japan), Southlake with San Luis Potosí (Mexico), and London with Frankfurt (Germany).
+  3. Data Standardization: Employee attributes were aligned with their assigned locations to improve data consistency and realism. First and last names were adjusted to better reflect the dominant nationality of the country in which employees were located, while still allowing for a limited number of international employees. Telephone numbers were also standardized to follow country-specific formats based on each employee’s location.
+  Additionally, the dependents table was removed from the analytical scope, as dependent information was not relevant to the workforce, compensation, and organizational analyses performed in this project.
+  4. Data Validation & Cleaning: Before analysis, the dataset was validated to ensure referential integrity across all relationships. Salary values were checked against the minimum and maximum salary bands defined for each job role, department assignments were verified against existing locations, and management hierarchies were reviewed to ensure employees were linked to valid managers where applicable.
+  5. Transformation: Several analytical metrics were derived to support business-focused analysis, including payroll variance, payroll efficiency by country, salary pressure relative to job salary bands, management span of control, workforce tenure, and department-level compensation indicators.
+  6. Analysis: The enriched dataset was analyzed using two stages of SQL analysis. The first stage focused on Exploratory Data Analysis (EDA) to understand workforce composition, payroll distribution, and geographic allocation. The second stage applied advanced SQL techniques, including JOINs, self-JOINs, CTEs, subqueries, and CASE statements, to answer business-oriented questions related to compensation, budgeting, workforce planning, and organizational structure.
+  7. Output: The final deliverables include a cleaned and enriched HR database, SQL scripts for both exploratory and advanced analysis, an Entity Relationship Diagram (ERD), and a three-page interactive Power BI dashboard
 
 ---
 
