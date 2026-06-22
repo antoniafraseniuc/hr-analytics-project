@@ -1,19 +1,14 @@
-# [Project Title]
-> *One sentence. What did you analyze, build, or solve - and why does it matter?*
+# [Enterprise HR Analytics Dashboard | MySQL & Power BI]
+> *An end-to-end HR Analytics project leveraging MySQL and Power BI to transform workforce data into strategic business insights, helping organizations optimize payroll spending, monitor compensation risks, and support data-driven workforce planning.*
 
 ---
 
 ## ⚙️ Project Type Flags
-> *Check what applies. This helps reviewers and collaborators understand the nature of the work at a glance. Delete this block before publishing.*
-
 - [ ] Exploratory Data Analysis (EDA)
 - [ ] SQL Analysis / Querying
 - [ ] Dashboard / Data Visualization
-- [ ] Data Pipeline / ETL
-- [ ] Predictive Modelling / Machine Learning
 - [ ] Data Cleaning / Wrangling
-- [ ] End-to-End (multiple of the above)
-- [ ] Other: ___________
+- [ ] End-to-End Analytics Project
 
 ---
 
@@ -37,59 +32,28 @@
 
 ## 1. Project Overview
 
-<!--
-  Write 3–5 sentences in plain language.
-  Cover: context → problem → approach → outcome.
-  Read it out loud. If it sounds like a form - rewrite it.
 
-  WHAT GOOD LOOKS LIKE:
-  "A mid-size retail business was seeing inconsistent revenue across
-  its regional stores but couldn't identify the root cause. This project
-  explored 18 months of transaction data across five regions to determine
-  whether underperformance was driven by sales volume, pricing, or return
-  rates. The analysis revealed that one region's gap was almost entirely
-  explained by an unusually high return rate on a single product category -
-  a finding invisible in the company's top-level reporting."
+**Context:** [Human Resources departments generate large volumes of workforce data but often lack the analytical tools required to transform that data into actionable business insights.
 
-  WHAT TO AVOID:
-  "This project analyzes sales data to find trends and insights."
-  (Too vague. Could describe 10,000 projects. Describes none of them.)
--->
+Organizations need visibility into workforce distribution, payroll expenditure, departmental performance, compensation structures, and management effectiveness.]
 
-**Context:** [The business, research, or personal situation that motivated this project.]
+**Problem Statement:** [As organizations grow, managing workforce costs and understanding organizational performance becomes increasingly complex. Without a centralized analytical framework, identifying payroll inefficiencies, budget variances, compensation risks, and management dependencies can be difficult and time-consuming.
 
-**Problem Statement:** [The specific question or challenge you were addressing.]
+This project addresses these challenges by transforming workforce data into a comprehensive HR Analytics solution that provides visibility into employee, compensation, and organizational metrics, enabling more effective workforce planning and strategic decision-making.]
 
-**Approach:** [In 1–2 sentences - how did you tackle it?]
+**Approach:** [The project follows an end-to-end analytics approach, leveraging SQL to uncover workforce, compensation, and organizational insights before translating those findings into executive-level Power BI dashboards. This enables stakeholders to monitor key HR metrics and make informed strategic decisions.]
 
-**Outcome:** [What did you produce or discover?]
+**Outcome:** [The outcome of the project is a decision-support tool that helps HR leaders and executives understand workforce trends, evaluate compensation strategies, and identify organizational risks. By consolidating data into interactive dashboards, the solution improves visibility and supports strategic planning.]
 
 ---
 
 ## 2. Objectives
 
-<!--
-  Write objectives that are specific enough to succeed or fail.
-  Use action-oriented verbs: Identify, Determine, Quantify, Build, Evaluate.
 
-  WHAT GOOD LOOKS LIKE:
-  ✅ "Determine whether customer churn rate correlates with support ticket volume."
-  ✅ "Identify the top three revenue-driving product categories across all regions."
-  ✅ "Build a reproducible pipeline that ingests and cleans daily sales exports."
-
-  WHAT TO AVOID:
-  ❌ "Explore the data."
-  ❌ "Gain insights."
-  ❌ "Understand trends."
-  (These can't fail - which means they can't succeed either.)
--->
-
-- **Primary Objective:** [The main thing you set out to do]
-- **Secondary Objective 1:** [Supporting goal]
-- **Secondary Objective 2:** [Supporting goal]
-- **Secondary Objective 3:** [Remove if not applicable]
-
-> 💡 *Every analysis decision in this project traces back to one of these objectives.*
+- **Primary Objective:** [Build an end-to-end HR Analytics solution that transforms workforce data into actionable business insights through advanced SQL analysis and interactive Power BI reporting.]
+- **Secondary Objective 1:** [Quantify workforce distribution, payroll allocation, and compensation structures across departments, countries, and organizational units.]
+- **Secondary Objective 2:** [Identify payroll inefficiencies, budget variances, salary pressure, and management dependencies that may impact workforce planning and organizational performance.]
+- **Secondary Objective 3:** [Develop executive-level dashboards that enable stakeholders to monitor key HR metrics and support data-driven decision-making.]
 
 ---
 
@@ -97,25 +61,12 @@
 
 ### Scope
 
-<!--
-  WHAT GOOD LOOKS LIKE:
-  In Scope: "Transaction-level data for Regions A–E, Jan 2023–Jun 2024.
-             Analysis covers revenue, return rates, and product category performance."
-  Out of Scope: "Customer demographics and marketing spend data were excluded -
-                 demographic data was incomplete for two regions, and marketing
-                 data sits in a separate system outside this engagement."
-
-  WHAT TO AVOID:
-  ❌ Leaving Out of Scope blank. This is the section that protects your credibility.
-     If you don't define the fence, reviewers assume you missed things.
--->
-
 | Dimension | Details |
 |-----------|---------|
-| **In Scope** | [What is included - data sources, time periods, segments] |
-| **Out of Scope** | [What you explicitly excluded - and a brief reason why] |
-| **Time Period** | [Date range of the data or the project itself] |
-| **Granularity** | [Unit of analysis - row-level, daily aggregates, per-user, etc.] |
+| **In Scope** | [Employees, Jobs, Departments, Countries, Regions, Locations] |
+| **Out of Scope** | [Attrition modelling, performance reviews, recruitment data] |
+| **Time Period** | [Simulated historical workforce data] |
+| **Granularity** | [Employee-level records] |
 
 ### Tools & Technologies
 
@@ -126,47 +77,35 @@
 
 | Category | Tool(s) Used |
 |----------|-------------|
-| Data Storage | [e.g., PostgreSQL, CSV files, BigQuery, S3] |
-| Data Processing | [e.g., Python, R, SQL, Excel, dbt] |
-| Analysis | [e.g., pandas, dplyr, custom SQL queries] |
-| Visualization | [e.g., Matplotlib, Tableau, Power BI, Looker] |
-| Version Control | [e.g., Git / GitHub] |
-| Documentation | [e.g., Markdown, Notion] |
-| Other | [Any additional tools] |
+| Data Storage | [MySQL] |
+| Data Processing | [MySQL] |
+| Analysis | [MySQL Queries] |
+| Visualization | [Power BI] |
+| Version Control | [GitHub] |
+| ERD Design | [dbdiagram.io] |
 
 ---
 
 ## 4. Repository Structure
 
 ```
-[project-root]/
+[HR-Analytics]/
 │
 ├── data/
 │   ├── raw/                  # Original, unmodified source data - never edited
 │   ├── processed/            # Cleaned and transformed data
-│   └── external/             # Reference data, lookup tables, third-party files
-│
-├── notebooks/                # Jupyter, R Markdown, or Colab notebooks
-│
-├── scripts/                  # Reusable .py, .R, or .sh processing files
 │
 ├── queries/                  # SQL files (retain this folder for SQL-heavy projects)
 │   ├── exploratory/          # Ad-hoc or investigative queries
 │   ├── transformations/      # Cleaning and reshaping logic
 │   └── final/                # Production-ready or presentation queries
 │
-├── reports/                  # Final outputs: PDFs, slide decks, Word docs
-│
 ├── visuals/                  # Exported charts, dashboard screenshots, ERD diagrams
 │
-├── docs/                     # Data dictionaries, schema notes, reference material
-│
-├── project_metadata.yml      # Machine-readable metadata (optional)
 └── README.md                 # You are here
 ```
 
-> ⚠️ *Delete folders you didn't use. An empty folder is worse than no folder.*
-> SQL-heavy projects: keep `queries/`. Analysis-only projects: keep `notebooks/`. Both? Keep both.
+
 
 ---
 
