@@ -268,7 +268,7 @@ The geographical structure of the dataset was also enhanced to better reflect a 
 
 ## 7. ERD - Entity Relationship Diagram
 
-![ERD Diagram](visuals/erd.png)
+![ERD Diagram](visuals/ERD Diagram.png)
 *Relational HR database connecting employees, jobs, departments, locations, countries and regions through hierarchical relationships.*
 
 
