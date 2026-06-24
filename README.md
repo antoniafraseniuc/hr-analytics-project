@@ -1,4 +1,4 @@
-# [Enterprise HR Analytics Dashboard | MySQL & Power BI]
+# Enterprise HR Analytics Dashboard | MySQL & Power BI
 > *An end-to-end HR Analytics project leveraging MySQL and Power BI to transform workforce data into strategic business insights, helping organizations optimize payroll spending, monitor compensation risks, and support data-driven workforce planning.*
 
 ---
