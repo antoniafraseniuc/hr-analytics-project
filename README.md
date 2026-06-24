@@ -159,187 +159,167 @@ The geographical structure of the dataset was also enhanced to better reflect a 
      if a formal schema doesn't apply. Even one paragraph is more helpful than nothing.
 -->
 
-### Dataset / Table: `[name]`
+### Dataset / Table: `employees`
 
 | Field Name | Data Type | Description | Example Value |
 |------------|-----------|-------------|---------------|
-| `[field_1]` | [string / int / date / float / boolean] | [What this field represents] | [Non-sensitive example] |
-| `[field_2]` | [string / int / date / float / boolean] | [What this field represents] | [Non-sensitive example] |
-| `[field_3]` | [string / int / date / float / boolean] | [What this field represents] | [Non-sensitive example] |
+| `employee_id` | INT | Unique identifier for each employee | 100 |
+| `first_name` | VARCHAR | Employee first name | Steven |
+| `last_name` | VARCHAR | Employee last name | King |
+| `email` | VARCHAR | Employee email address | steven.king@success.com |
+| `phone_number` | VARCHAR | Country-formatted employee phone number | +49 069 123456 |
+| `hire_date` | DATE | Date when the employee joined the company | 1998-03-24 |
+| `job_id` | INT | Foreign key linking the employee to a job role | 9 |
+| `salary` | DECIMAL | Employee salary aligned with the job salary range | 9000.00 |
+| `manager_id` | INT | Self-referencing key identifying the employee’s manager | 100 |
+| `department_id` | INT | Foreign key linking the employee to a department | 6 |
 
-> **Row count (approx.):** [X rows]
-> **Date range:** [Start] – [End]
-> **Key join / relationship:** [e.g., `orders.customer_id` → `customers.id`]
+> **Row count (approx.):** 15,000 
+> **Primary key:** `employee_id` 
+> **Key relationships:**  
+`employees.job_id → jobs.job_id`  
+`employees.department_id → departments.department_id`  
+`employees.manager_id → employees.employee_id`
 
-*Add additional table blocks as needed for multi-table projects.*
+### Table: `jobs`
+
+| Field Name | Data Type | Description | Example Value |
+|---|---|---|---|
+| `job_id` | INT | Unique identifier for each job role | 9 |
+| `job_title` | VARCHAR | Name of the job position | Programmer |
+| `min_salary` | DECIMAL | Minimum salary allowed for the job role | 4000.00 |
+| `max_salary` | DECIMAL | Maximum salary allowed for the job role | 10000.00 |
+
+> **Primary key:** `job_id`  
+> **Key relationship:**  
+`jobs.job_id → employees.job_id`
+
+---
+
+### Table: `departments`
+
+| Field Name | Data Type | Description | Example Value |
+|---|---|---|---|
+| `department_id` | INT | Unique identifier for each department | 6 |
+| `department_name` | VARCHAR | Name of the department | IT |
+| `location_id` | INT | Foreign key linking the department to a location | 1400 |
+
+> **Primary key:** `department_id`  
+> **Key relationship:**  
+`departments.location_id → locations.location_id`
+
+---
+
+### Table: `locations`
+
+| Field Name | Data Type | Description | Example Value |
+|---|---|---|---|
+| `location_id` | INT | Unique identifier for each company location | 1400 |
+| `street_address` | VARCHAR | Street address of the location | 2014 Jabberwocky Rd |
+| `postal_code` | VARCHAR | Postal or ZIP code of the location | 78395 |
+| `city` | VARCHAR | City where the office is located | San Luis Potosí |
+| `state_province` | VARCHAR | State, province, or regional subdivision | San Luis Potosí |
+| `country_id` | CHAR | Foreign key linking the location to a country | MX |
+
+> **Primary key:** `location_id`  
+> **Key relationship:**  
+`locations.country_id → countries.country_id`
+
+---
+
+### Table: `countries`
+
+| Field Name | Data Type | Description | Example Value |
+|---|---|---|---|
+| `country_id` | CHAR | Two-letter country identifier | MX |
+| `country_name` | VARCHAR | Full country name | Mexico |
+| `region_id` | INT | Foreign key linking the country to a region | 2 |
+
+> **Primary key:** `country_id`  
+> **Key relationship:**  
+`countries.region_id → regions.region_id`
+
+---
+
+### Table: `regions`
+
+| Field Name | Data Type | Description | Example Value |
+|---|---|---|---|
+| `region_id` | INT | Unique identifier for each geographic region | 2 |
+| `region_name` | VARCHAR | Name of the geographic region | Americas |
+
+> **Primary key:** `region_id`
+
+---
+
+### Relationship Summary
+
+| Relationship | Join Key | Type |
+|---|---|---|
+| `regions → countries` | `regions.region_id = countries.region_id` | One-to-Many |
+| `countries → locations` | `countries.country_id = locations.country_id` | One-to-Many |
+| `locations → departments` | `locations.location_id = departments.location_id` | One-to-Many |
+| `departments → employees` | `departments.department_id = employees.department_id` | One-to-Many |
+| `jobs → employees` | `jobs.job_id = employees.job_id` | One-to-Many |
+| `employees → employees` | `employees.employee_id = employees.manager_id` | Self-Join / Manager Hierarchy |
+
 
 ---
 
 ## 7. ERD - Entity Relationship Diagram
-### *(Primarily for SQL Projects - remove this section if not applicable)*
 
-<!--
-  An ERD shows how your tables connect to each other visually.
-  It is the fastest way for a reviewer to understand the data structure
-  of a SQL project without reading every query.
-
-  HOW TO INCLUDE YOUR ERD:
-  Option A - Image embed (most common):
-    Export your ERD from dbdiagram.io, DBeaver, Lucidchart, or similar.
-    Save to /visuals/erd.png and reference it below.
-
-  Option B - dbdiagram.io code block (version-controllable):
-    Paste your schema definition code directly in the fenced block below.
-    Anyone can paste it into dbdiagram.io to regenerate the visual.
-
-  Option C - Mermaid diagram (renders natively in GitHub):
-    Use the mermaid code block syntax below.
-    GitHub will render this as a diagram automatically.
-
-  PICK ONE. Don't use all three. Delete the options you don't use.
--->
-
-### Option A - Embedded Image
 ![ERD Diagram](visuals/erd.png)
-*[Brief caption: e.g., "Three-table schema - orders, customers, and products joined on shared IDs."]*
+*Relational HR database connecting employees, jobs, departments, locations, countries and regions through hierarchical relationships.*
 
----
-
-### Option B - dbdiagram.io Schema Definition
-```
-Table orders {
-  order_id    int     [pk]
-  customer_id int     [ref: > customers.customer_id]
-  product_id  int     [ref: > products.product_id]
-  order_date  date
-  amount      float
-}
-
-Table customers {
-  customer_id int  [pk]
-  region_code string
-  signup_date date
-}
-
-Table products {
-  product_id   int    [pk]
-  category     string
-  unit_price   float
-}
-```
-*Paste this into [dbdiagram.io](https://dbdiagram.io) to view the visual.*
-
----
-
-### Option C - Mermaid Diagram *(renders on GitHub)*
-```mermaid
-erDiagram
-    ORDERS {
-        int order_id PK
-        int customer_id FK
-        int product_id FK
-        date order_date
-        float amount
-    }
-    CUSTOMERS {
-        int customer_id PK
-        string region_code
-        date signup_date
-    }
-    PRODUCTS {
-        int product_id PK
-        string category
-        float unit_price
-    }
-    ORDERS ||--o{ CUSTOMERS : "placed by"
-    ORDERS ||--o{ PRODUCTS : "contains"
-```
-
----
-
-**Table Relationships Summary:**
-
-| Relationship | Join Key | Type |
-|-------------|----------|------|
-| `orders` → `customers` | `customer_id` | Many-to-One |
-| `orders` → `products` | `product_id` | Many-to-One |
-| [Add rows as needed] | | |
 
 ---
 
 ## 8. Analysis & Metrics
 
-<!--
-  Explain what you measured and how - before you share what you found.
-
-  WHAT GOOD LOOKS LIKE:
-  Metric: "Customer Return Rate"
-  Definition: "Number of transactions flagged as returns divided by total
-               transactions, calculated at product-category and regional grain."
-  Why It Matters: "Return rate - not sales volume - was hypothesised to
-                  explain regional revenue gaps. This metric tests that hypothesis."
-
-  WHAT TO AVOID:
-  ❌ Defining a metric only in code: SUM(returns) / COUNT(transaction_id)
-     That's an implementation. Write the plain-language definition here.
-     Both belong in your project - the definition in the README,
-     the implementation in the code.
--->
-
 ### Analytical Approach
 
-[Describe how you approached the analysis. Were you exploring patterns? Testing a hypothesis? Building and validating a pipeline? Be honest about your method - exploratory work is valid, just call it that.]
+The analysis was conducted using a combination of exploratory and business-focused techniques. The initial phase focused on understanding workforce composition, compensation distribution, and organizational structure through Exploratory Data Analysis (EDA). Once the data had been validated and enriched, the analysis shifted toward answering specific business questions related to payroll allocation, budget utilization, compensation efficiency, workforce experience, and managerial responsibility. The objective was not only to describe the workforce but also to identify patterns and potential risks that could influence strategic HR and financial decisions.
 
 ### Key Metrics Defined
 
 | Metric | Plain-Language Definition | Why It Matters |
 |--------|--------------------------|----------------|
-| `[Metric 1]` | [What it measures, in one sentence] | [What decision or question it answers] |
-| `[Metric 2]` | [What it measures, in one sentence] | [What decision or question it answers] |
-| `[Metric 3]` | [What it measures, in one sentence] | [What decision or question it answers] |
+| `Payroll Variance` | The difference between actual payroll spending and the expected payroll cost based on salary ranges for each role. | Helps identify departments operating above or below their planned compensation budget. |
+| `Salary Pressure` | The percentage of an employee's salary relative to the maximum salary allowed for their job position. | Highlights roles that may face retention risks due to limited room for future salary growth. |
+| `Payroll Efficiency` | Average payroll cost per employee within a country or location. | Allows comparison of compensation costs across geographic regions. |
+| `Team Size` | The number of employees reporting to a specific manager. | Helps identify management workload and organizational dependency risks. |
+| `Workforce Tenure` | The average number of years employees have been employed by the organization. | Indicates workforce stability, experience levels, and succession planning needs. |
+| `Payroll Concentration` | The proportion of total payroll allocated to a department. | Identifies departments with the greatest financial impact on overall workforce costs. |
 
 ### Methods Used
 
-- [e.g., Descriptive statistics - distribution, central tendency, outlier detection]
-- [e.g., Trend analysis across [time period]]
-- [e.g., Segmentation / group comparison by [dimension]]
-- [e.g., Correlation analysis between [variable A] and [variable B]]
-- [e.g., SQL window functions for [specific aggregation]]
-- [e.g., Custom aggregation or transformation logic in [tool]]
+- Descriptive statistics to evaluate workforce, salary, and payroll distributions.
+- Department, country, and location-level segmentation to compare organizational units.
+- Business-rule-based calculations to derive payroll variance and salary pressure metrics.
+- Self-JOIN analysis to evaluate management structures and reporting hierarchies.
+- Common Table Expressions (CTEs) to simplify complex payroll and budget calculations.
+- Comparative analysis of workforce and compensation metrics across organizational dimensions.
+- Interactive dashboard reporting through Power BI to support stakeholder exploration.
 
 ---
 
 ## 9. Key Insights
 
-<!--
-  Findings + implications. Not just what happened - what it means.
 
-  WHAT GOOD LOOKS LIKE:
-  ✅ "Return rates, not sales volume, explain Region A's underperformance.
-      Region A's return rate on home goods was 34% - more than double the
-      company average. Revenue was not lost at the point of sale; it was
-      lost post-sale through refunds. This points to a fulfilment or
-      product quality issue specific to that region, not a demand problem."
+**Insight 1: Payroll spending is concentrated within a small number of departments**
+The Sales and IT departments account for the largest share of total payroll expenditure. This suggests that workforce planning decisions within these departments have a disproportionate impact on organizational costs and should therefore receive increased attention during budgeting and resource allocation exercises.
 
-  WHAT TO AVOID:
-  ❌ "Region A had lower revenue than other regions in Q4."
-     (That's an observation. It describes what happened.
-      An insight says what it means and where to look next.)
+**Insight 2: Overall compensation spending remains aligned with budget expectations**
+The organization operates slightly below its projected payroll budget, indicating that salary expenditure is generally consistent with planned compensation structures. While this suggests effective budget control, departmental-level analysis reveals that some departments exceed their expected payroll targets while others operate below them.
 
-  Aim for 3–6 insights. Quality over quantity.
--->
+**Insight 3: Certain job positions exhibit elevated salary pressure**
+Several roles, including Stock Managers, Marketing Managers, and Finance Managers, operate close to the upper limit of their salary bands. This may indicate future retention risks, as employees in these positions have limited opportunities for salary progression without promotion or salary band adjustments.
 
-**Insight 1: [Short descriptive headline]**
-[What you found + what it suggests. One short paragraph.]
+**Insight 4: Significant compensation differences exist across countries**
+Payroll efficiency varies considerably across geographic locations, with some countries exhibiting substantially higher payroll costs per employee than others. This suggests that workforce location plays an important role in overall compensation expenditure and should be considered in future workforce planning initiatives.
 
-**Insight 2: [Short descriptive headline]**
-[What you found + what it suggests.]
-
-**Insight 3: [Short descriptive headline]**
-[What you found + what it suggests.]
-
-**Insight 4 (if applicable): [Short descriptive headline]**
-[What you found + what it suggests.]
+**Insight 5: Organizational dependency risks exist within management structures**
+A small number of managers supervise disproportionately large teams. While this may improve administrative efficiency, it also creates potential succession and operational risks if key managers leave the organization or become unavailable.
 
 ---
 
@@ -366,63 +346,41 @@ erDiagram
 
 | Priority | Recommendation | Based On | Suggested Owner |
 |----------|---------------|----------|-----------------|
-| High | [Specific, actionable step] | [Insight it comes from] | [Who should act] |
-| Medium | [Specific, actionable step] | [Insight it comes from] | [Who should act] |
-| Low | [Exploratory or longer-term suggestion] | [Insight it comes from] | [Who should act] |
+| High | Review job positions operating above 80% salary pressure and evaluate whether promotion pathways or salary band adjustments are required. | Insight 3 – Elevated Salary Pressure | HR & Compensation Team |
+| Medium | Analyze workforce allocation strategies within Sales and IT to ensure payroll expenditure remains aligned with business value and productivity.| Insight 1 – Payroll Concentration | Department Leadership |
+| Low | Investigate compensation differences between countries and locations to determine whether workforce distribution can be optimized without impacting business performance. | Insight 4 – Geographic Compensation Differences | Workforce Planning Team |
 
 ---
 
 ## 11. Assumptions & Limitations
 
-<!--
-  WHAT GOOD LOOKS LIKE:
-  Assumption: "Transaction records were assumed to be complete for all five regions.
-               No validation was performed against source system record counts."
-  Limitation: "The analysis cannot distinguish between returns initiated by
-               the customer vs. returns initiated by the business (e.g., recalls).
-               If business-initiated returns are concentrated in Region A, the
-               return rate finding may reflect a policy decision, not a quality issue."
-
-  WHAT TO AVOID:
-  ❌ Leaving this section blank or writing "None known."
-     Every project has limitations. Documenting them is a sign of
-     analytical maturity - not a confession of failure.
--->
 
 ### Assumptions
-- [What did you treat as true without being able to verify?]
-- [What simplifications did you make for scope or feasibility?]
-- [What domain rules or definitions did you accept as given?]
+- Salary ranges defined within the jobs table accurately represent the compensation framework of the organization.
+- Generated employee records follow realistic workforce distributions and organizational structures.
+- Employees were assumed to belong to a single department and report to a single manager at any given time.
+- Country-specific names and telephone formats were assumed to reasonably represent local workforce characteristics.
 
 ### Limitations
-- [What gaps exist in the data?]
-- [What analysis was out of scope but could affect interpretation?]
-- [What would a more rigorous version of this project include?]
-- [Are there known biases in the data source or collection method?]
+- The dataset was synthetically expanded from an original sample of approximately 40 employees and therefore does not represent a real organization.
+- Employee performance, productivity, and attrition data were unavailable and could not be incorporated into the analysis.
+- Compensation analysis focuses exclusively on salary and does not include bonuses, benefits, stock options, or other forms of remuneration.
+- Workforce planning recommendations are based solely on available HR data and do not account for external business or market conditions.
 
-> *The goal here is pre-emptive Q&A. What would a thoughtful skeptic push back on? Document the answer here, before they ask.*
+  *A more comprehensive version of this project would incorporate employee performance indicators, recruitment data, turnover history, and workforce forecasting models to provide a more complete view of organizational effectiveness.*
+
 
 ---
 
 ## 12. Future Enhancements
 
-<!--
-  WHAT GOOD LOOKS LIKE:
-  ✅ "Automate the monthly data pull from the POS export folder using
-      a scheduled Python script, replacing the current manual process."
-  ✅ "Expand the return rate analysis to include carrier-level data,
-      which was unavailable in this dataset but exists in the logistics system."
 
-  WHAT TO AVOID:
-  ❌ "Add a machine learning model."
-     (Vague, and disconnected from the actual findings of this project.)
-  ❌ Listing aspirational features that don't follow logically from the work.
--->
-
-- [ ] [Enhancement 1 - specific and traceable to a real gap in this project]
-- [ ] [Enhancement 2]
-- [ ] [Enhancement 3]
-- [ ] [Enhancement 4]
+- [ ] Incorporate employee attrition and turnover data to analyze workforce retention patterns.
+- [ ] Develop workforce forecasting models to estimate future staffing requirements and payroll costs.
+- [ ] Integrate employee performance metrics to evaluate compensation effectiveness and workforce productivity.
+- [ ] Expand the Power BI solution with drill-through pages and department-level reporting.
+- [ ] Automate data generation and refresh processes through scheduled ETL pipelines.
+- [ ] Publish the dashboard through Power BI Service to support online sharing and stakeholder access.
 
 ---
 
@@ -438,15 +396,15 @@ erDiagram
 
 ## 14. Author
 
-**[Your Name]**
-[Your role or title - current or target]
+**Fraseniuc Nicoleta Antonia**
+Budding Data Analyst
 
-- 🔗 [LinkedIn URL]
+- 🔗 https://www.linkedin.com/in/antonia-fraseniuc-75664018b/
 - 💼 [Portfolio or GitHub profile URL]
-- 📧 [Email - optional]
+- 📧 antonia.fraseniuc100@gmail.com
 
 ---
 
-*Last updated: [Month YYYY]*
-*If this template helped you, consider starring the repository.*
+*Last updated: June 2026*
+
 
