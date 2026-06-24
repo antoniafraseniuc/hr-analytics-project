@@ -384,23 +384,14 @@ A small number of managers supervise disproportionately large teams. While this 
 
 ---
 
-## 13. Deliverables
 
-| Deliverable | Description | Location |
-|-------------|-------------|----------|
-| [Name] | [What it contains] | [`/path/to/file`] |
-| [Name] | [What it contains] | [`/path/to/file`] |
-| [Name] | [What it contains] | [`/path/to/file`] |
-
----
-
-## 14. Author
+## 13. Author
 
 **Fraseniuc Nicoleta Antonia**
 Budding Data Analyst
 
 - 🔗 https://www.linkedin.com/in/antonia-fraseniuc-75664018b/
-- 💼 [Portfolio or GitHub profile URL]
+- 💼 https://github.com/antoniafraseniuc/hr-analytics-project
 - 📧 antonia.fraseniuc100@gmail.com
 
 ---
