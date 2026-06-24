@@ -94,6 +94,7 @@ This project addresses these challenges by transforming workforce data into a co
 ├── queries/                  # SQL files (retain this folder for SQL-heavy projects)
 │   ├── exploratory/          # Ad-hoc or investigative queries
 │   ├── transformations/      # Cleaning and reshaping logic
+│   ├── Advanced Analysis/    # Business-focused SQL queries
 │   └── final/                # Production-ready or presentation queries
 │
 ├── visuals/                  # Exported charts, dashboard screenshots, ERD diagrams
