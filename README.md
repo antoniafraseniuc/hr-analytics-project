@@ -122,6 +122,8 @@ This project addresses these challenges by transforming workforce data into a co
 ```
 [HR-Analytics]/
 │
+├── assets/                   # Dashboard Demo
+│
 ├── data/
 │   ├── raw/                  # Original, unmodified source data - never edited
 │   ├── processed/            # Cleaned and transformed data
