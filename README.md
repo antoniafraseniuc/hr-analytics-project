@@ -79,7 +79,7 @@ This project addresses these challenges by transforming workforce data into a co
 
 ## Dashboard Preview
 
-![Dashboard Demo](assets/dashboard-demo.gif)
+![Dashboard Demo][(assets/dashboard-demo.gif)]
 ---
 
 ## 3. Objectives
