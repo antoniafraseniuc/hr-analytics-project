@@ -122,10 +122,12 @@ This project addresses these challenges by transforming workforce data into a co
 │   ├── raw/                  # Original, unmodified source data - never edited
 │   ├── processed/            # Cleaned and transformed data
 │
+├── power-bi/                 # Interactive .pbix 
+│
 ├── queries/                  # SQL files (retain this folder for SQL-heavy projects)
 │   ├── exploratory/          # Ad-hoc or investigative queries
 │   ├── transformations/      # Cleaning and reshaping logic
-│   ├── Advanced Analysis/    # Business-focused SQL queries
+│   ├── advanced_analysis/    # Business-focused SQL queries
 │   └── final/                # Production-ready or presentation queries
 │
 ├── visuals/                  # Exported charts, dashboard screenshots, ERD diagrams
