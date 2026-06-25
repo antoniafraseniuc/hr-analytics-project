@@ -386,6 +386,17 @@ A small number of managers supervise disproportionately large teams. While this 
 ---
 
 
+## 13. Deliverables
+
+| Deliverable | Description | Location |
+|---|---|---|
+| EDA Analysis | Exploratory SQL queries | `queries/exploratory/` |
+| Advanced Analysis | Business-focused SQL queries | `queries/advanced_analysis/` |
+| Power BI Dashboard | Three-page interactive dashboard | `Power BI Dashboard/` |
+| ERD Diagram | Database relationship diagram | `visuals/` |
+
+---
+
 ## 13. Author
 
 **Fraseniuc Nicoleta Antonia**
