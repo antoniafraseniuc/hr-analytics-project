@@ -12,6 +12,17 @@
 
 ---
 
+## Project Highlights
+
+- 📊 15,000+ employee records analyzed
+- 🗄️ Relational MySQL database with 6 interconnected tables
+- 💻 30+ SQL queries using JOINs, CTEs, Subqueries, CASE, and Window Functions
+- 📈 3 interactive Power BI dashboard pages
+- 📐 Entity Relationship Diagram (ERD) designed in dbdiagram.io
+- 🎯 End-to-end project covering data enrichment, SQL analysis, and business intelligence
+
+---
+
 ## Table of Contents
 1. [Project Overview](#1-project-overview)
 2. [Objectives](#2-objectives)
@@ -47,7 +58,27 @@ This project addresses these challenges by transforming workforce data into a co
 
 ---
 
-## 2. Objectives
+## 2. Dashboard Preview
+
+### Executive Summary
+
+![Executive Summary](visuals/Executive_Summary.png)
+
+---
+
+### Compensation & Budget Analysis
+
+![Compensation](visuals/Compensation_Analysis.png)
+
+---
+
+### Workforce & Organizational Analysis
+
+![Workforce](visuals/Workforce_Analysis.png)
+
+---
+
+## 3. Objectives
 
 
 - **Primary Objective:** Build an end-to-end HR Analytics solution that transforms workforce data into actionable business insights through advanced SQL analysis and interactive Power BI reporting.
@@ -57,7 +88,7 @@ This project addresses these challenges by transforming workforce data into a co
 
 ---
 
-## 3. Project Scope & Tools
+## 4. Project Scope & Tools
 
 ### Scope
 
@@ -82,7 +113,7 @@ This project addresses these challenges by transforming workforce data into a co
 
 ---
 
-## 4. Repository Structure
+## 5. Repository Structure
 
 ```
 [HR-Analytics]/
@@ -102,11 +133,9 @@ This project addresses these challenges by transforming workforce data into a co
 └── README.md                 # You are here
 ```
 
-
-
 ---
 
-## 5. Data Workflow
+## 6. Data Workflow
 
 ```
 [Data Source]
@@ -137,7 +166,7 @@ The geographical structure of the dataset was also enhanced to better reflect a 
 
 ---
 
-## 6. Data Model & Schema
+## 7. Data Model & Schema
 
 <!--
   Define your fields so that someone reading your analysis can follow along
@@ -267,15 +296,16 @@ The geographical structure of the dataset was also enhanced to better reflect a 
 
 ---
 
-## 7. ERD - Entity Relationship Diagram
+## 8. ERD - Entity Relationship Diagram
+
+The following diagram illustrates the relational structure of the HR database used throughout the project.
 
 ![ERD Diagram][(visuals/ERD Diagram.png)](https://github.com/antoniafraseniuc/hr-analytics-project/blob/09d3c1a8f3d50818dc22d40db4b992718a38d2b6/visuals/ERD%20Diagram.png)
 *Relational HR database connecting employees, jobs, departments, locations, countries and regions through hierarchical relationships.*
 
-
 ---
 
-## 8. Analysis & Metrics
+## 9. Analysis & Metrics
 
 ### Analytical Approach
 
@@ -304,7 +334,7 @@ The analysis was conducted using a combination of exploratory and business-focus
 
 ---
 
-## 9. Key Insights
+## 10. Key Insights
 
 
 **Insight 1: Payroll spending is concentrated within a small number of departments**
@@ -324,7 +354,7 @@ A small number of managers supervise disproportionately large teams. While this 
 
 ---
 
-## 10. Recommendations
+## 11. Recommendations
 
 <!--
   Action-oriented. Addressed to a real audience.
@@ -353,7 +383,7 @@ A small number of managers supervise disproportionately large teams. While this 
 
 ---
 
-## 11. Assumptions & Limitations
+## 12. Assumptions & Limitations
 
 
 ### Assumptions
@@ -373,7 +403,7 @@ A small number of managers supervise disproportionately large teams. While this 
 
 ---
 
-## 12. Future Enhancements
+## 13. Future Enhancements
 
 
 - [ ] Incorporate employee attrition and turnover data to analyze workforce retention patterns.
@@ -386,7 +416,7 @@ A small number of managers supervise disproportionately large teams. While this 
 ---
 
 
-## 13. Deliverables
+## 14. Deliverables
 
 | Deliverable | Description | Location |
 |---|---|---|
@@ -397,7 +427,7 @@ A small number of managers supervise disproportionately large teams. While this 
 
 ---
 
-## 13. Author
+## 15. Author
 
 **Fraseniuc Nicoleta Antonia**
 Budding Data Analyst
