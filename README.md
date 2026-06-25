@@ -79,7 +79,7 @@ This project addresses these challenges by transforming workforce data into a co
 
 ## Dashboard Preview
 
-![Dashboard Demo][(assets/dashboard-demo.gif)](https://github.com/antoniafraseniuc/hr-analytics-project/blob/eb30c28b8630aba020a2db83b6f74a007cd54def/assets/dashboard-demo.gif)
+![Dashboard Demo][(assets/dashboard-demo.gif)]
 ---
 
 ## 3. Objectives
